@@ -34,6 +34,11 @@ class RestClient
         $this->baseRestUri = $baseRestUri;
     }
 
+    /**
+     * Get Message Class
+     *
+     * @return RestClient
+     */
     public function message() : RestClient
     {
         return $this;
@@ -42,7 +47,7 @@ class RestClient
     /**
      * get apiToken
      *
-     * @return $this
+     * @return RestClient
      */
     public function authorize()
     {
@@ -73,6 +78,11 @@ class RestClient
         return $this->getResponse($response->getBody());
     }
 
+    /**
+     * Get sms credit balance
+     *
+     * @return string
+     */
     public function balance()
     {
         $response = $this->client->request(static::HTTP_GET, $this->baseRestUri . 'Balance', [
