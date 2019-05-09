@@ -28,7 +28,7 @@ class Message
      * Set the message content.
      *
      * @param  string  $content
-     * @return $this
+     * @return Message
      */
     public function content(string $content) : Message
     {
