@@ -64,7 +64,7 @@ class RestClient
     /**
      * Submit API request to send SMS
      *
-     * @api https://docs.smsportal.com/reference#bulkmessages
+     * @link https://docs.smsportal.com/reference#bulkmessages
      * @param array $options
      * @return array
      */
@@ -82,7 +82,7 @@ class RestClient
     /**
      * Submit API request to send SMS
      *
-     * @api https://docs.smsportal.com/reference#groupmessages
+     * @link https://docs.smsportal.com/reference#groupmessages
      * @param array $options
      * @return array
      */
@@ -100,7 +100,7 @@ class RestClient
     /**
      * Get sms credit balance
      *
-     * @api https://docs.smsportal.com/reference#balance
+     * @link https://docs.smsportal.com/reference#balance
      * @return string
      */
     public function balance()
