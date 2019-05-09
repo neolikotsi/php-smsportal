@@ -47,6 +47,7 @@ class RestClient
     /**
      * get apiToken
      *
+     * https://docs.smsportal.com/reference#authentication
      * @return RestClient
      */
     public function authorize()
@@ -63,15 +64,33 @@ class RestClient
     /**
      * Submit API request to send SMS
      *
+     * @api https://docs.smsportal.com/reference#bulkmessages
      * @param array $options
      * @return array
      */
     public function send(array $options)
     {
         $this->authorize();
-        $requestBody = ['messages' => [$options]];
         $response = $this->client->request(static::HTTP_POST, $this->baseRestUri . 'BulkMessages', [
-            'json' => $requestBody,
+            'json' => $options,
+            'http_errors' => false,
+            'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
+        ]);
+        return $this->getResponse($response->getBody());
+    }
+
+    /**
+     * Submit API request to send SMS
+     *
+     * @api https://docs.smsportal.com/reference#groupmessages
+     * @param array $options
+     * @return array
+     */
+    public function sendToGroup(array $options)
+    {
+        $this->authorize();
+        $response = $this->client->request(static::HTTP_POST, $this->baseRestUri . 'GroupMessages', [
+            'json' => $options,
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
@@ -81,6 +100,7 @@ class RestClient
     /**
      * Get sms credit balance
      *
+     * @api https://docs.smsportal.com/reference#balance
      * @return string
      */
     public function balance()
