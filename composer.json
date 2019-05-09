@@ -1,7 +1,7 @@
 {
     "name": "neolikotsi/php-smsportal",
     "description": "SMS Portal API for PHP",
-    "keywords": ["sms", "php sms", "sms portal", "sms api"],
+    "keywords": ["sms", "php sms", "sms portal", "sms-client api"],
     "type": "project",
     "authors": [{
         "name": "Neo Likotsi",
