@@ -108,7 +108,7 @@ class RestClient
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
         $responseData = $this->getResponse((string) $response->getBody());
-        return $responseData['number'];
+        return $responseData['balance'];
     }
 
     /**
