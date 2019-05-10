@@ -105,6 +105,7 @@ class RestClient
      */
     public function balance()
     {
+        $this->authorize();
         $response = $this->client->request(static::HTTP_GET, $this->baseRestUri . 'Balance', [
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
