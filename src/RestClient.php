@@ -70,8 +70,7 @@ class RestClient
      */
     public function send(array $options)
     {
-        $this->authorize();
-        $response = $this->client->request(static::HTTP_POST, $this->baseRestUri . 'BulkMessages', [
+        $response = $this->authorize()->client->request(static::HTTP_POST, $this->baseRestUri . 'BulkMessages', [
             'json' => $options,
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
@@ -88,8 +87,7 @@ class RestClient
      */
     public function sendToGroup(array $options)
     {
-        $this->authorize();
-        $response = $this->client->request(static::HTTP_POST, $this->baseRestUri . 'GroupMessages', [
+        $response = $this->authorize()->client->request(static::HTTP_POST, $this->baseRestUri . 'GroupMessages', [
             'json' => $options,
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
@@ -105,8 +103,7 @@ class RestClient
      */
     public function balance()
     {
-        $this->authorize();
-        $response = $this->client->request(static::HTTP_GET, $this->baseRestUri . 'Balance', [
+        $response = $this->authorize()->client->request(static::HTTP_GET, $this->baseRestUri . 'Balance', [
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
