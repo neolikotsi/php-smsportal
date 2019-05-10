@@ -56,7 +56,7 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Basic ' . base64_encode($this->apiId . ':' . $this->apiSecret)]
         ]);
-        $responseData = $this->getResponse($response->getBody());
+        $responseData = $this->getResponse((string) $response->getBody());
         $this->apiToken = $responseData['token'];
         return $this;
     }
@@ -76,7 +76,7 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
-        return $this->getResponse($response->getBody());
+        return $this->getResponse((string) $response->getBody());
     }
 
     /**
@@ -94,7 +94,7 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
-        return $this->getResponse($response->getBody());
+        return $this->getResponse((string) $response->getBody());
     }
 
     /**
@@ -109,7 +109,7 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
-        $responseData = $this->getResponse($response->getBody());
+        $responseData = $this->getResponse((string) $response->getBody());
         return $responseData['number'];
     }
 

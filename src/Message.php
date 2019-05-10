@@ -32,7 +32,7 @@ class Message
      */
     public function content(string $content) : Message
     {
-        $this->content = str_replace('<br>', '|', nl2br($content, false));
+        $this->content = trim(str_replace('<br>', '|', nl2br($content, false)));
 
         return $this;
     }
