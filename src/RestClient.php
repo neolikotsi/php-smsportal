@@ -39,7 +39,7 @@ class RestClient
      *
      * @return RestClient
      */
-    public function message() : RestClient
+    public function message() : self
     {
         return $this;
     }
@@ -50,7 +50,7 @@ class RestClient
      * https://docs.smsportal.com/reference#authentication
      * @return RestClient
      */
-    public function authorize()
+    public function authorize() : self
     {
         $response = $this->client->request(static::HTTP_GET, $this->baseRestUri . 'Authentication', [
             'http_errors' => false,
@@ -68,7 +68,7 @@ class RestClient
      * @param array $options
      * @return array
      */
-    public function send(array $options)
+    public function send(array $options) : array
     {
         $response = $this->authorize()->client->request(static::HTTP_POST, $this->baseRestUri . 'BulkMessages', [
             'json' => $options,
@@ -85,7 +85,7 @@ class RestClient
      * @param array $options
      * @return array
      */
-    public function sendToGroup(array $options)
+    public function sendToGroup(array $options) : array
     {
         $response = $this->authorize()->client->request(static::HTTP_POST, $this->baseRestUri . 'GroupMessages', [
             'json' => $options,
@@ -101,7 +101,7 @@ class RestClient
      * @link https://docs.smsportal.com/reference#balance
      * @return string
      */
-    public function balance()
+    public function balance() : string
     {
         $response = $this->authorize()->client->request(static::HTTP_GET, $this->baseRestUri . 'Balance', [
             'http_errors' => false,
@@ -117,7 +117,7 @@ class RestClient
      * @param string $responseBody
      * @return array
      */
-    private function getResponse(string $responseBody)
+    private function getResponse(string $responseBody) : array
     {
         return json_decode($responseBody, true);
     }

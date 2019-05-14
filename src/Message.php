@@ -30,7 +30,7 @@ class Message
      * @param  string  $content
      * @return Message
      */
-    public function content(string $content) : Message
+    public function content(string $content) : self
     {
         $this->content = trim(str_replace('<br>', '|', nl2br($content, false)));
 
