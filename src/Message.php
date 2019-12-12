@@ -36,4 +36,14 @@ class Message
 
         return $this;
     }
+
+    /**
+     * Get the message content.
+     *
+     * @return string
+     */
+    public function getContent() : string
+    {
+        return $this->content;
+    }
 }
