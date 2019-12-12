@@ -35,7 +35,7 @@ $responseArray1 = $client->message()->send([
                 ]);
 
 // send to /groupmessages endpoint
-$responseArray2 =$client->message()->sendToGroup([
+$responseArray2 = $client->message()->sendToGroup([
                     'message' => $message->getContent(),
                     'groups' => ['BloemfonteinStores', 'BotshabeloStores'],
                 ]);

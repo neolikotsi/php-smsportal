@@ -35,7 +35,7 @@ class RestClient
     }
 
     /**
-     * Get Message Class
+     * Syntax candy method
      *
      * @return RestClient
      */
