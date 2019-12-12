@@ -29,14 +29,14 @@ $responseArray1 = $client->message()->send([
                     'messages' => [
                         [
                             'destination' => '1234567890'
-                            'content' => $message->content,
+                            'content' => $message->getContent(),
                         ]
                     ]
                 ]);
 
 // send to /groupmessages endpoint
 $responseArray2 =$client->message()->sendToGroup([
-                    'message' => $message->content,
+                    'message' => $message->getContent(),
                     'groups' => ['BloemfonteinStores', 'BotshabeloStores'],
                 ]);
 ```
