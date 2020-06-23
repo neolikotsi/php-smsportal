@@ -48,6 +48,18 @@ You can check your SMS credit with the `balance` method.
 $client->balance();
 ```
 
+## Test Mode ([see api doc](https://docs.smsportal.com/docs/rest-sending))
+```php
+$client->message()->inTestMode()->send([
+    'messages' => [
+        [
+            'destination' => '1234567890'
+            'content' => $message->getContent(),
+        ]
+    ]
+]);
+```
+
 ## For Laravel users see package
 [neolikotsi/laravel-smsportal](https://github.com/neolikotsi/laravel-smsportal)
 
