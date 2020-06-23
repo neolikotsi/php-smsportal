@@ -20,6 +20,7 @@ class RestClient
     private $client;
     private $apiId;
     private $apiSecret;
+    private  $testMode = false;
 
     /**
      * Create a new API connection
@@ -56,8 +57,10 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Basic ' . base64_encode($this->apiId . ':' . $this->apiSecret)]
         ]);
+
         $responseData = $this->getResponse((string) $response->getBody());
         $this->apiToken = $responseData['token'];
+
         return $this;
     }
 
@@ -70,11 +73,20 @@ class RestClient
      */
     public function send(array $options) : array
     {
+        if ($this->testMode) {
+            $options = array_merge($options, [
+                'sendOptions' => [
+                    'testMode' => true
+                    ]
+                ]);
+        }
+
         $response = $this->authorize()->client->request(static::HTTP_POST, $this->baseRestUri . 'BulkMessages', [
             'json' => $options,
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
+
         return $this->getResponse((string) $response->getBody());
     }
 
@@ -92,6 +104,7 @@ class RestClient
             'http_errors' => false,
             'headers' => ['Authorization' => 'Bearer ' . $this->apiToken]
         ]);
+
         return $this->getResponse((string) $response->getBody());
     }
 
@@ -120,5 +133,27 @@ class RestClient
     private function getResponse(string $responseBody) : array
     {
         return json_decode($responseBody, true);
+    }
+
+    /**
+     * test send REST API request
+     *
+     * @return this
+     */
+    public function inTestMode($test = true) : self
+    {
+        $this->testMode = $test;
+
+        return $this;
+    }
+
+    /**
+     * gets testMode of instance
+     *
+     * @return boolean
+     */
+    public function getTestMode() : bool
+    {
+        return $this->testMode;
     }
 }
