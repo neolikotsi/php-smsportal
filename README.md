@@ -66,3 +66,7 @@ $client->message()->inTestMode()->send([
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+## Sponsor
+
+BTC Wallet: 18YGRct3jRxkRyxsHG5ByLCkUef7MdXNMw
